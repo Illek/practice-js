@@ -1,13 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Console Output</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.css"
+      integrity="sha512-C+KPK958JmUdU8B9SVr8YpEZtQ1T1XrFX/OLvE/lt336DFWXFHL5Y9/tUewMEU+Uy3dUAS363XXLdBine0WDyQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div class="console-container">
+      <div id="console-task-1" class="console-box"><h3>Task 1</h3></div>
+      <div id="console-task-2" class="console-box"><h3>Task 2</h3></div>
+      <div id="console-task-3" class="console-box"><h3>Task 3</h3></div>
+    </div>
+
+    <script>
+      function captureConsole(id) {
+        const consoleBox = document.getElementById(id);
+        return function (...args) {
+          const message = args
+            .map(arg => {
+              try {
+                return JSON.stringify(arg, null, 2);
+              } catch (e) {
+                return String(arg);
+              }
+            })
+            .join(" ");
+          const div = document.createElement("div");
+          div.textContent = message;
+          consoleBox.appendChild(div);
+          consoleBox.scrollTop = consoleBox.scrollHeight;
+        };
+      }
+      window.task1Console = captureConsole("console-task-1");
+      window.task2Console = captureConsole("console-task-2");
+      window.task3Console = captureConsole("console-task-3");
+
+      (function () {
+        const originalConsoleLog = console.log;
+        console.log = function (...args) {
+          const err = new Error();
+          const stack = err.stack || "";
+          let targetFunc;
+          if (stack.indexOf("task-1.js") !== -1) {
+            targetFunc = window.task1Console;
+          } else if (stack.indexOf("task-2.js") !== -1) {
+            targetFunc = window.task2Console;
+          } else if (stack.indexOf("task-3.js") !== -1) {
+            targetFunc = window.task3Console;
+          }
+          if (targetFunc) {
+            targetFunc(...args);
+          }
+          originalConsoleLog.apply(console, args);
+        };
+      })();
+    </script>
+
+    <script src="./js/task-1.js" defer type="module"></script>
+    <script src="./js/task-2.js" defer type="module"></script>
+    <script src="./js/task-3.js" defer type="module"></script>
   </body>
 </html>
