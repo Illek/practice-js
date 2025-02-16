@@ -1,8 +1,13 @@
-const a =
-  "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iusto sit ipsam, nesciunt ratione iure veniam commodi reprehenderit architecto officia eligendi asperiores provident aperiam. Reprehenderit quis quaerat vero similique aliquam modi, eligendi, doloremque sit enim voluptas neque incidunt fugit illum reiciendis! Sed corrupti tempore itaque culpa labore, veniam sapiente est!";
+function getElementWidth(content, padding, border) {
+  return (
+    Number.parseFloat(content) +
+    (Number.parseFloat(padding) + Number.parseFloat(border)) * 2
+  );
+}
 
-// console.log(a);
-// consol;
+console.log(getElementWidth("50px", "8px", "4px")); // 74
+console.log(getElementWidth("60px", "12px", "8.5px")); // 101
+console.log(getElementWidth("200px", "0px", "0px")); // 200
 
 // const value = "24.5px";
 // const numerical = Math.round(Number.parseFloat(value));
@@ -10,5 +15,3 @@ const a =
 
 // console.log(Math.floor(Math.random() * 100) + 1);
 // console.log(Number.parseInt(Math.abs(Math.random() * 100)));
-
-// Оголошення параметрів x, y, z
