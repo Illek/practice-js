@@ -1,3 +1,9 @@
-const a = "hello World :)";
+function getInfo(value) {
+  let info = "nice size (☞ﾟヮﾟ)☞";
+  if (value <= 15) {
+    info = "short — is good too ( ´･･)ﾉ(._.`)";
+  }
 
-console.log(a);
+  const size = Number.int;
+  return info;
+}
