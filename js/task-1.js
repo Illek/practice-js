@@ -1,9 +1,14 @@
-function getInfo(value) {
-  let info = "nice size (☞ﾟヮﾟ)☞";
-  if (value <= 15) {
-    info = "short — is good too ( ´･･)ﾉ(._.`)";
-  }
-
-  const size = Number.int;
-  return info;
+function makeTransaction(quantity, pricePerDroid, customerCredits) {
+  const totalSum = quantity * pricePerDroid;
+  const order =
+    customerCredits < totalSum
+      ? "Insufficient funds!"
+      : `You order ${quantity} droids worth ${totalSum} credits!`;
+  return order;
 }
+
+console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
+console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
+console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
+console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
+console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"

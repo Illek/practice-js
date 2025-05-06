@@ -18,6 +18,7 @@
       <div id="console-task-1" class="console-box"><h3>Task 1</h3></div>
       <div id="console-task-2" class="console-box"><h3>Task 2</h3></div>
       <div id="console-task-3" class="console-box"><h3>Task 3</h3></div>
+      <div id="console-task-4" class="console-box"><h3>Task 4</h3></div>
     </div>
 
     <script>
@@ -42,6 +43,7 @@
       window.task1Console = captureConsole("console-task-1");
       window.task2Console = captureConsole("console-task-2");
       window.task3Console = captureConsole("console-task-3");
+      window.task4Console = captureConsole("console-task-4");
 
       (function () {
         const originalConsoleLog = console.log;
@@ -55,6 +57,8 @@
             targetFunc = window.task2Console;
           } else if (stack.indexOf("task-3.js") !== -1) {
             targetFunc = window.task3Console;
+          } else if (stack.indexOf("task-4.js") !== -1) {
+            targetFunc = window.task4Console;
           }
           if (targetFunc) {
             targetFunc(...args);
@@ -67,5 +71,6 @@
     <script src="./js/task-1.js" defer type="module"></script>
     <script src="./js/task-2.js" defer type="module"></script>
     <script src="./js/task-3.js" defer type="module"></script>
+    <script src="./js/task-4.js" defer type="module"></script>
   </body>
 </html>

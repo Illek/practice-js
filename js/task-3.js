@@ -1,5 +1,5 @@
-const a =
-  "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iusto sit ipsam, nesciunt ratione iure veniam commodi reprehenderit architecto officia eligendi asperiores provident aperiam. Reprehenderit quis quaerat vero similique aliquam modi, eligendi, doloremque sit enim voluptas neque incidunt fugit illum reiciendis! Sed corrupti tempore itaque culpa labore, veniam sapiente est!";
+// const a =
+//   "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iusto sit ipsam, nesciunt ratione iure veniam commodi reprehenderit architecto officia eligendi asperiores provident aperiam. Reprehenderit quis quaerat vero similique aliquam modi, eligendi, doloremque sit enim voluptas neque incidunt fugit illum reiciendis! Sed corrupti tempore itaque culpa labore, veniam sapiente est!";
 
 // console.log(a);
 // consol;
@@ -12,3 +12,18 @@ const a =
 // console.log(Number.parseInt(Math.abs(Math.random() * 100)));
 
 // Оголошення параметрів x, y, z
+
+function checkForSpam(message) {
+  const check =
+    message.toLowerCase().includes("spam") ||
+    message.toLowerCase().includes("sale");
+  return check;
+}
+
+console.log(checkForSpam("Latest technology news")); // false
+console.log(checkForSpam("JavaScript weekly newsletter")); // false
+console.log(checkForSpam("Get best sale offers now!")); // true
+console.log(checkForSpam("Amazing SalE, only tonight!")); // true
+console.log(checkForSpam("Trust me, this is not a spam message")); // true
+console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
+console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
