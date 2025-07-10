@@ -1,14 +1,15 @@
-const a =
-  "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iusto sit ipsam, nesciunt ratione iure veniam commodi reprehenderit architecto officia eligendi asperiores provident aperiam. Reprehenderit quis quaerat vero similique aliquam modi, eligendi, doloremque sit enim voluptas neque incidunt fugit illum reiciendis! Sed corrupti tempore itaque culpa labore, veniam sapiente est!";
+function filterArray(numbers, value) {
+  const filteredArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > value) {
+      filteredArr.push(numbers[i]);
+    }
+  }
+  return filteredArr;
+}
 
-// console.log(a);
-// consol;
-
-// const value = "24.5px";
-// const numerical = Math.round(Number.parseFloat(value));
-// console.log(numerical);
-
-// console.log(Math.floor(Math.random() * 100) + 1);
-// console.log(Number.parseInt(Math.abs(Math.random() * 100)));
-
-// Оголошення параметрів x, y, z
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
